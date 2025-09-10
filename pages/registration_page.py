@@ -1,7 +1,9 @@
 import os
 
+from pathlib import Path
 from selene import browser, have, by
 from users import User
+
 
 
 class RegistrationPage:
@@ -73,7 +75,8 @@ class RegistrationPage:
         self.fill_birthday(*user.birthday)
         self.subject_enter.type(user.first_subject).press_enter()
         self.user_hobby.element(by.text(user.hobby)).click()
-        self.user_picture.send_keys(os.path.join(os.path.dirname(__file__), 'test.txt'))
+        file_path = Path(__file__).parent.parent / "resources" / user.file_name
+        self.user_picture.send_keys(str(file_path.resolve()))
         self.user_address.set_value(user.address)
         self.choose_location(*user.user_location)
         self.submit_button.click()

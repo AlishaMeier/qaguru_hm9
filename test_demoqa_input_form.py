@@ -4,7 +4,7 @@ from users import User
 
 def test_form_submission():
     registration_page = RegistrationPage()
-    alex = User(first_name='Alisha',
+    alisha = User(first_name='Alisha',
                  last_name='Meier',
                  email='alisha.meyerr@gmail.com',
                  gender="Female",
@@ -18,6 +18,6 @@ def test_form_submission():
                  )
 
     registration_page.open()
-    registration_page.register(alex)
-    registration_page.should_have_registered(alex)
+    registration_page.register(alisha)
+    registration_page.should_have_registered(alisha)
     print('Success')
