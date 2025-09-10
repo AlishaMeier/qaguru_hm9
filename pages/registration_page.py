@@ -1,4 +1,5 @@
 from selene import browser, have, be, by
+from pathlib import Path
 import os
 
 
@@ -39,12 +40,12 @@ class RegistrationPage:
         return self
 
     def set_hobby(self, value):
-        browser.all('.custom-checkbox').element_by(have.exact_text('Music')).click()
+        browser.all('.custom-checkbox').element_by(have.exact_text(value)).click()
         return self
 
-    def upload_picture(self, value):
-        file_path = os.path.join(os.path.dirname(__file__), 'test_check.txt')
-        browser.element('#uploadPicture').send_keys(file_path)
+    def upload_picture(self, file_name: str):
+        file_path = Path(__file__).parent.parent / "resources" / file_name
+        browser.element('#uploadPicture').send_keys(str(file_path.resolve()))
         return self
 
     def fill_current_address(self, value):
