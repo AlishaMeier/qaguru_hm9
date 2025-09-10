@@ -28,7 +28,7 @@ class RegistrationPage:
         return self
 
     def set_gender(self, value):
-        browser.all('[name=gender]').element_by(have.value('Female')).element('..').click()
+        browser.all('[name=gender]').element_by(have.value(value)).element('..').click()
         return self
 
     def fill_phone_number(self, value):
